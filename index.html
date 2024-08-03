@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Js-Task</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+  <body>
+    <section class="container-box">
+      <!-- Bmi Calculation -->
+
+      <div class="container-bmi">
+        <h6 class="text-end">Bmi Calculator</h6>
+        <h2 class="title-bmi">Calculate Your BMI</h2>
+
+        <div class="d-flex m-4 flex-column text-center w-100">
+          <label class="p-3 label"
+            >Weight(kg): <span id="size-kg">1</span></label
+          >
+          <input
+            class=""
+            id="weight"
+           
+            value="70"
+            step="1"
+            type="range"
+            min="1"
+            max="250"
+          />
+        </div>
+        <div class="d-flex w-100 m-3 flex-column text-center">
+          <label class="p-3 label" for=""
+            >Height(cm): <span id="height-cm"></span
+          ></label>
+          <input type="range" id="height" value="170" min="100" max="250" />
+        </div>
+
+        <h3 class="status">BMI : <span id="results"></span></h3>
+        <h2 class="status">Status : <span id="status"></span></h2>
+      </div>
+
+      <!-- start music player -->
+
+      <div class="player">
+        <h6>Music Player</h6>
+        <div class="wrapper">
+          <div class="box-player">
+            <div class="img-art"></div>
+            <div class="name-art">
+              <h2 class="music-name">نام موزیک</h2>
+              <span class="art-name">نام خواننده</span>
+            </div>
+            <div class="music-bar">
+              <span class="startMusic">00:00</span>
+              <input
+                class="musicBar"
+                onchange="SeekTo()"
+                value="0"
+                type="range"
+                min="0"
+                max="100"
+              />
+              <span class="endMusic">00:00</span>
+            </div>
+
+            <div class="music-volume">
+              <div class="volume-down">
+                <i class="bi bi-volume-down"></i>
+              </div>
+              <input
+                class="volume-bar"
+                value="100"
+                onchange="SetVolume()"
+                type="range"
+                min="1"
+                max="100"
+              />
+              <div class="volume-up">
+                <i class="bi bi-volume-up"></i>
+              </div>
+            </div>
+
+            <div class="buttons">
+              <div class="shuffle-music" onclick="RandomTrack()">
+                <i class="bi bi-shuffle"></i>
+              </div>
+              <div class="prev-music" onclick="PrevTrack() ">
+                <i class="bi bi-skip-start-fill"></i>
+              </div>
+              <div class="play-music" onclick="PlayPauseTrack()">
+                <i class="bi bi-play-fill"></i>
+              </div>
+              <div class="next-music" onclick="nextTrack()">
+                <i class="bi bi-skip-end-fill"></i>
+              </div>
+              <div class="repeat-music" onclick="RepeatTrack()">
+                <i class="bi bi-repeat"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- end music player -->
+
+      <!-- Start Timer -->
+
+      <div class="timer-container">
+        <h6 class="timer-title text-end">Count Down Timer</h6>
+        <div class="timer-wrapper">
+          <div class="timer-body">
+            <div class="timer-box">
+              <div class="box">
+                <p>Days</p>
+                <span id="days">00</span>
+              </div>
+              <div class="box">
+                <p>Hours</p>
+                <span id="hours">00</span>
+              </div>
+              <div class="box">
+                <p>Minutes</p>
+                <span id="minutes">00</span>
+              </div>
+              <div class="box">
+                <p>Secounds</p>
+                <span id="secounds">00</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End timer  -->
+
+      <!-- Start Form validation -->
+
+      <div class="form-container">
+        <h6 class="text-white ">Form Validation</h6>
+        <div class="form-wrapper">
+          <form action="" id="form" class="form">
+            <div class="box-input">
+              <input id="username" type="text" placeholder=" " />
+              <label for="username">UserName</label>
+            </div>
+            <div id="username-error" class="">
+              Please enter a valid username
+            </div>
+
+            <div class="box-input">
+              <input id="email" type="email" placeholder=" " />
+              <label for="email">Email</label>
+            </div>
+            <div id="email-error" class="">Please enter a valid email</div>
+
+            <div class="box-input">
+              <input id="password" type="password" placeholder=" " />
+              <label for="password">Password</label>
+            </div>
+            <div id="password-error" class="">
+              Password must be at least 6 characters
+            </div>
+
+            <div class="box-input">
+              <input type="password" id="confirm-password" placeholder=" " />
+              <label for="confirm-password">RePassword</label>
+            </div>
+            <div id="confirm-password-error" class="">
+              Passwords do not match
+            </div>
+
+            <button
+              type="submit"
+              class="box-input justify-content-center submit"
+              id="btn"
+              onsubmit="ResetHandler()"
+            >
+              Login
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+      integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
